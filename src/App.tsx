@@ -46,7 +46,7 @@ export const App = () => {
       return;
     }
 
-    const newId = Math.max(...todos.map(t => t.id)) + 1;
+    const newId = Math.max(0, ...todos.map(t => t.id)) + 1;
 
     const newTodo: TodoWithUser = {
       id: newId,
@@ -69,6 +69,7 @@ export const App = () => {
 
       <form action="/api/todos" method="POST" onSubmit={handleSubmit}>
         <div className="field">
+          <label htmlFor="titleInput">Title</label>
           <input
             type="text"
             data-cy="titleInput"
@@ -85,6 +86,7 @@ export const App = () => {
         </div>
 
         <div className="field">
+          <label htmlFor="userSelect">User</label>
           <select
             data-cy="userSelect"
             value={userId}
